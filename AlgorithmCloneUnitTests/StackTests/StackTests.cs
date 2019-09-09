@@ -60,5 +60,14 @@ namespace AlgorithmCloneUnitTests.StackTests {
             Assert.Equal("Hello", hello);
             Assert.Null(_stack.Pop());
         }
+
+        [Fact]
+        public void TestMakeEmpty() {
+            _stack.Push("Hello");
+            _stack.Push("World");
+            Assert.NotNull(_stack.Pop());
+            Assert.NotNull(_stack.Pop());
+            Assert.True(_stack.IsEmpty);
+        }
     }
 }
