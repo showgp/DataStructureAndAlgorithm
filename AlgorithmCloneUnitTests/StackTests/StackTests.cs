@@ -19,7 +19,7 @@ namespace AlgorithmCloneUnitTests.StackTests {
         [Fact]
         public void TestStackIsEmpty() {
             Assert.True(_stack.IsEmpty);
-            // Assert.Null(_stack.Top);
+            Assert.Null(_stack.Top);
             Assert.Equal(0, _stack.Count);
             Assert.Null(_stack.Pop());
         }
@@ -37,7 +37,7 @@ namespace AlgorithmCloneUnitTests.StackTests {
             Assert.Equal(result, value);
             Assert.True(_stack.IsEmpty);
             Assert.Equal(0, _stack.Count);
-            // Assert.Null(_stack.Top);
+            Assert.Null(_stack.Top);
         }
 
         [Fact]
@@ -68,6 +68,8 @@ namespace AlgorithmCloneUnitTests.StackTests {
             Assert.NotNull(_stack.Pop());
             Assert.NotNull(_stack.Pop());
             Assert.True(_stack.IsEmpty);
+            Assert.Null(_stack.Pop());
+            Assert.Null(_stack.Top);
         }
     }
 }

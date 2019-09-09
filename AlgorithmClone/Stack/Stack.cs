@@ -52,7 +52,7 @@ namespace AlgorithmClone.Stack {
 
         public T Pop() {
             if (IsEmpty) {
-                return default;
+                return default(T);
             } else {
                 var last = _elemArray.Last();
                 _elemArray.RemoveAt(_elemArray.Count - 1);
@@ -60,6 +60,10 @@ namespace AlgorithmClone.Stack {
             }
         }
 
-        public T Top => _elemArray.Last();
+        public T Top {
+            get {
+                return _elemArray.Any() ? _elemArray.Last() : default(T);
+            }
+        }
     }
 }
