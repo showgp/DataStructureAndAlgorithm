@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-// TODO: 当泛型参数分别为值类型和引用类型的时候, 如果处理 null 的情况, 即 Top 等返回 null 的情况.
-
 namespace AlgorithmClone.Stack {
     public interface IStack<T> {
         /// <summary>
@@ -52,7 +50,7 @@ namespace AlgorithmClone.Stack {
 
         public T Pop() {
             if (IsEmpty) {
-                return default(T);
+                return default;
             } else {
                 T last = _elemArray.Last();
                 _elemArray.RemoveAt(_elemArray.Count - 1);
@@ -60,6 +58,6 @@ namespace AlgorithmClone.Stack {
             }
         }
 
-        public T Top => _elemArray.Any() ? _elemArray.Last() : default(T);
+        public T Top => _elemArray.Any() ? _elemArray.Last() : default;
     }
 }
