@@ -54,16 +54,12 @@ namespace AlgorithmClone.Stack {
             if (IsEmpty) {
                 return default(T);
             } else {
-                var last = _elemArray.Last();
+                T last = _elemArray.Last();
                 _elemArray.RemoveAt(_elemArray.Count - 1);
                 return last;
             }
         }
 
-        public T Top {
-            get {
-                return _elemArray.Any() ? _elemArray.Last() : default(T);
-            }
-        }
+        public T Top => _elemArray.Any() ? _elemArray.Last() : default(T);
     }
 }

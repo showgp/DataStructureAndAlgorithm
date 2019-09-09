@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CSharpDemoA {
+﻿namespace CSharpDemoA {
     class Program {
         public static void Main() {
             System.Console.WriteLine("Hello");
