@@ -8,6 +8,12 @@ namespace AlgorithmClone.Queue {
         Boolean IsEmpty { get; }
 
         /// <summary>
+        /// Returns the size of this queue.
+        /// </summary>
+        /// <value></value>
+        Int64 Size { get; }
+
+        /// <summary>
         /// Returns the elements count of the queue.
         /// </summary>
         Int64 Count { get; }
@@ -20,8 +26,8 @@ namespace AlgorithmClone.Queue {
         /// <summary>
         /// Add an element into the queue.
         /// </summary>
-        /// <param name="vlaue">The element to be added into the queue.</param>
-        void Enqueue(T vlaue);
+        /// <param name="value">The element to be added into the queue.</param>
+        void Enqueue(T value);
 
         /// <summary>
         /// Remove and return the front element.
