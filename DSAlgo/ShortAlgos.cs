@@ -1,15 +1,6 @@
-﻿using System;
-
-namespace CSharpDemoA {
-    class Program {
-        public static void Main() {
-            char[] a = new char[3];
-            a[0] = 'a';
-            System.Console.WriteLine(a[0]);
-            System.Console.WriteLine("Hello");
-            System.Console.WriteLine($"8 和 4 的最大公约数是: {GCD(8, 4)}");
-        }
-
+namespace DSAlgo {
+    internal interface IShortAlgos
+    {
         /// <summary>
         /// 求两个数的最大公约数.
         /// 
@@ -24,7 +15,12 @@ namespace CSharpDemoA {
         /// <param name="p"></param>
         /// <param name="q"></param>
         /// <returns>p 和 q 的最大公约数.</returns>
-        private static uint GCD(uint p, uint q) {
+        uint GCD(uint p, uint q);
+    }
+    internal class ShortAlgos : IShortAlgos
+    {
+        public uint GCD(uint p, uint q)
+        {
             if (q == 0) { return p; }
             return GCD(q, p % q);
         }
