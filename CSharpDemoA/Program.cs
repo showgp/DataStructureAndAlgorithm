@@ -3,6 +3,9 @@
 namespace CSharpDemoA {
     class Program {
         public static void Main() {
+            char[] a = new char[3];
+            a[0] = 'a';
+            System.Console.WriteLine(a[0]);
             System.Console.WriteLine("Hello");
             System.Console.WriteLine($"8 和 4 的最大公约数是: {GCD(8, 4)}");
         }
