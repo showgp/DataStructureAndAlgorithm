@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 
-namespace C1
-{
-    public interface IBag<Item> : IEnumerable<Item>
-    {
+namespace C1 {
+    public interface IBag<Item> : IEnumerable<Item> {
         /// add an item
         void Add(Item item);
 
@@ -14,8 +12,7 @@ namespace C1
         int Size();
     }
 
-    public interface IQueue<Item> : IEnumerable<Item>
-    {
+    public interface IQueue<Item> : IEnumerable<Item> {
         /// add an item
         void Enqueue(Item item);
 
@@ -28,8 +25,7 @@ namespace C1
         int Size();
     }
 
-    public interface IStack<Item> : IEnumerable<Item>
-    {
+    public interface IStack<Item> : IEnumerable<Item> {
         void Push(Item item);
 
         Item Pop();
