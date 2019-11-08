@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+
 namespace C1 {
     public class FixedCapacityStackOfStrings : IFixedCapacityStackOfStrings {
         private readonly string[] _arr;
@@ -39,5 +42,35 @@ namespace C1 {
         }
 
         public int Size() => _top;
+
+        public IEnumerator<Item> GetEnumerator() => new ReverseEnumerator<Item>(_arr, Size());
+
+        IEnumerator IEnumerable.GetEnumerator() => new ReverseEnumerator<Item>(_arr, Size());
+    }
+
+    internal class ReverseEnumerator<Item> : IEnumerator<Item> {
+        private Item[] _arr;
+        private int _currentIndex;
+
+        public ReverseEnumerator(Item[] arr, int totalLength) {
+            _arr = arr;
+            _currentIndex = totalLength;
+        }
+
+        public Item Current => _arr[_currentIndex];
+
+        object IEnumerator.Current => _arr[_currentIndex];
+
+        public void Dispose() {
+            _arr = null;
+        }
+
+        public bool MoveNext() {
+            return (--_currentIndex) >= 0;
+        }
+
+        public void Reset() {
+            throw new System.NotImplementedException();
+        }
     }
 }

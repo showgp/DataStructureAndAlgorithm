@@ -14,6 +14,8 @@ namespace DSAlgo {
             System.Console.WriteLine($"8 和 4 的最大公约数是: {result}");
             System.Console.WriteLine("C1 的定长 stack: ");
             FixedCapacityStackClient();
+            System.Console.WriteLine(">-----------------------<");
+            LinkedListStackClient();
         }
 
         /// <summary>
@@ -25,9 +27,20 @@ namespace DSAlgo {
             foreach (var item in arr) {
                 stack.Push(item);
             }
+            // 实现了迭代器之后, 就可以直接在 stack 上遍历了(这里实现的是一个逆序迭代器)
+            foreach (var item in stack) {
+                System.Console.WriteLine($"栈中元素: {item}");
+            }
             while (!stack.IsEmpty()) {
                 System.Console.WriteLine(stack.Pop());
             }
+        }
+
+        /// <summary>
+        /// 链式栈的客户代码
+        /// </summary>
+        static void LinkedListStackClient() {
+
         }
     }
 }
