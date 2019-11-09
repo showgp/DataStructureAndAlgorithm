@@ -31,9 +31,9 @@ namespace C1 {
     /// </summary>
     /// <typeparam name="Item">存储的数据元素类型</typeparam>
     public interface ILinkedList<Item> {
-        void InsertAtBeginning(Item item);
+        void InsertAtStart(Item item);
         void InsertAtEnd(Item item);
-        Item RemoveFromBeginning();
+        Item RemoveFromStart();
         Item RemoveFromEnd();
     }
 }

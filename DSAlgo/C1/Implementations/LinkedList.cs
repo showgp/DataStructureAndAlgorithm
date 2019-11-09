@@ -16,7 +16,7 @@ namespace C1 {
             _last = _first;
         }
 
-        public void InsertAtBeginning(Item item) {
+        public void InsertAtStart(Item item) {
             var node = new SingleLinkNode<Item>(item, _first);
             _first = node;
         }
@@ -27,12 +27,26 @@ namespace C1 {
             _last = node;
         }
 
-        public Item RemoveFromBeginning() {
-            throw new System.NotImplementedException();
+        public Item RemoveFromStart() {
+            var node = _first.Next;
+            _first.Next = node.Next;
+            if (_first.Next == null) _last = _first;
+            return node.Value;
         }
 
         public Item RemoveFromEnd() {
-            throw new System.NotImplementedException();
+            var node = _last;
+            _last = FindLastPre();
+            return node.Value;
+        }
+
+        private SingleLinkNode<Item> FindLastPre() {
+            if (_last == _first) return _first;
+            var node = _first.Next;
+            while (node.Next != _last) {
+                node = node.Next;
+            }
+            return node;
         }
     }
 

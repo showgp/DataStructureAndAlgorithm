@@ -39,8 +39,6 @@ namespace DSAlgo {
         /// <summary>
         /// 链式栈的客户代码
         /// </summary>
-        static void LinkedListStackClient() {
-
-        }
+        static void LinkedListStackClient() { }
     }
 }
