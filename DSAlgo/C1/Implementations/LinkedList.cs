@@ -5,24 +5,35 @@ namespace C1 {
         /// </summary>
         private SingleLinkNode<Item> _first;
 
+        public SingleLinkNode<Item> First => _first;
+
         /// <summary>
         /// 尾指针
         /// </summary>
         private SingleLinkNode<Item> _last;
+        public SingleLinkNode<Item> Last => _last;
+
+        ILinkedListNode<Item> ILinkedList<Item>.First => First;
+
+        ILinkedListNode<Item> ILinkedList<Item>.Last => Last;
 
         public SingleLinkedList() {
             // 附加头结点
-            _first = new SingleLinkNode<Item>(default, null);
+            _first = new SingleLinkNode<Item>(default);
             _last = _first;
         }
 
         public void InsertAtStart(Item item) {
-            var node = new SingleLinkNode<Item>(item, _first);
-            _first = node;
+            var node = new SingleLinkNode<Item>(item);
+            if (_first == _last) { // 空表插入的情况
+                _last = node;
+            }
+            node.Next = _first.Next;
+            _first.Next = node;
         }
 
         public void InsertAtEnd(Item item) {
-            var node = new SingleLinkNode<Item>(item, null);
+            var node = new SingleLinkNode<Item>(item);
             _last.Next = node;
             _last = node;
         }
@@ -50,7 +61,7 @@ namespace C1 {
         }
     }
 
-    public class SingleLinkNode<T> {
+    public class SingleLinkNode<T> : ILinkedListNode<T> {
         /// <summary>
         /// 下一个节点指针
         /// </summary>
@@ -62,6 +73,7 @@ namespace C1 {
             get => _next;
         }
         private SingleLinkNode<T> _next;
+        ILinkedListNode<T> ILinkedListNode<T>.Next => Next;
 
         /// <summary>
         /// 节点元素值
@@ -73,11 +85,11 @@ namespace C1 {
             }
             get => _value;
         }
+
         private T _value;
 
-        public SingleLinkNode(T value, SingleLinkNode<T> next) {
+        public SingleLinkNode(T value) {
             this._value = value;
-            this._next = next;
         }
     }
 }

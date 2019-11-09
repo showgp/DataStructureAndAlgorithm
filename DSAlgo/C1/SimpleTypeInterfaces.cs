@@ -35,5 +35,16 @@ namespace C1 {
         void InsertAtEnd(Item item);
         Item RemoveFromStart();
         Item RemoveFromEnd();
+        ILinkedListNode<Item> First { get; }
+        ILinkedListNode<Item> Last { get; }
+    }
+
+    /// <summary>
+    /// 链表结点接口
+    /// </summary>
+    /// <typeparam name="Item"></typeparam>
+    public interface ILinkedListNode<Item> {
+        Item Value { get; }
+        ILinkedListNode<Item> Next { get; }
     }
 }
