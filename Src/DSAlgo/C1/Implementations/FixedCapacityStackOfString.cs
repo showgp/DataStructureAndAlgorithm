@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace C1 {
+using C1.Interfaces;
+
+namespace C1.Implementations {
     public class FixedCapacityStackOfStrings : IFixedCapacityStackOfStrings {
         private readonly string[] _arr;
         private int _size;
