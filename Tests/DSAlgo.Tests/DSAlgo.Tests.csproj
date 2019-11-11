@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSAlgo\DSAlgo.csproj" />
+    <ProjectReference Include="..\..\Src\DSAlgo\DSAlgo.csproj" />
   </ItemGroup>
 
 </Project>
