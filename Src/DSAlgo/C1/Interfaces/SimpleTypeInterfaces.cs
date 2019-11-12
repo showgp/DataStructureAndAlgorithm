@@ -33,12 +33,6 @@ namespace C1.Interfaces {
     /// <typeparam name="Item"></typeparam>
     public interface ISingleLinkedList<Item> : ILinkedList<Item> {
         /// <summary>
-        /// 头结点
-        /// </summary>
-        /// <value></value>
-        ISingleLinkedListNode<Item> First { get; }
-
-        /// <summary>
         /// 尾节点
         /// </summary>
         /// <value></value>

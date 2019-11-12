@@ -36,9 +36,25 @@ namespace DSAlgo.Tests {
         public void TestInitialization() {
             ISingleLinkedList<int> list = new SingleLinkedList<int>();
             Assert.IsTrue(list.IsEmpty());
+            Assert.IsNull(list.Head.Next);
             Assert.AreEqual(0, list.Size());
-            Assert.IsNull(list.First);
             Assert.IsNotNull(list.Head);
+        }
+
+        [TestMethod]
+        public void TestInsertAtStart() {
+            // given
+            var elem = "Hello World";
+            // when
+            _sut.InsertAtStart(elem);
+            // then
+            Assert.IsNotNull(_sut.Head.Next);
+            Assert.IsNull(_sut.Head.Next.Next);
+            Assert.AreEqual(elem, _sut.Head.Next.Value);
+            Assert.IsFalse(_sut.IsEmpty());
+            Assert.AreEqual(1, _sut.Size());
+            Assert.IsNotNull(_sut.Last);
+            Assert.AreEqual(_sut.Head.Next, _sut.Last);
         }
     }
 }

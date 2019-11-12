@@ -6,7 +6,7 @@ namespace C1.Implementations {
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class SingleLinkedListNode<T> : ISingleLinkedListNode<T> {
-        public SingleLinkedListNode(T value, SingleLinkedListNode<T> next) {
+        public SingleLinkedListNode(T value, ISingleLinkedListNode<T> next) {
             Value = value;
             Next = next;
         }
