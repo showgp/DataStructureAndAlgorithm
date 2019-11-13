@@ -1,11 +1,36 @@
 ﻿using System;
+using System.Diagnostics;
 
-using C1;
+using C1.AlgoAnalysis;
 using C1.Implementations;
 
 namespace DSAlgo {
     class Program {
-        public static void Main() {
+        public static void Main(string[] args) {
+            ThreeSumCalc(args);
+        }
+
+        /// <summary>
+        /// 算法分析的入门例子客户代码
+        /// </summary>
+        /// <param name="args"></param>
+        private static void ThreeSumCalc(string[] args) {
+            if (args.Length == 0) {
+                System.Console.WriteLine("需要在参数中指定问题规模! \n放弃计算...");
+                return;
+            }
+            var arr = ThreeSum.GetRandomArray(args);
+            var watch = new Stopwatch();
+            watch.Start();
+            var result = ThreeSum.Count(arr);
+            watch.Stop();
+            var ts = watch.Elapsed;
+            System.Console.WriteLine($"消耗时间: {ts.TotalMilliseconds} ms");
+            System.Console.WriteLine($"问题规模: {arr.Length}");
+            System.Console.WriteLine($"求解结果(三个数和为 0 的个数): {result}");
+        }
+
+        private static void OldMain() {
             char[] a = new char[3];
             a[0] = 'a';
             System.Console.WriteLine(a[0]);
