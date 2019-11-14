@@ -12,8 +12,7 @@ namespace C1.AlgoAnalysis {
             return cnt;
         }
 
-        public static int[] GetRandomArray(string[] args) {
-            int count = int.Parse(args[0]);
+        public static int[] GetRandomArray(int count) {
             int[] a = new int[count];
             for (int i = 0; i < count; i++)
                 a[i] = new Random().Next(-1000000, 1000000);
