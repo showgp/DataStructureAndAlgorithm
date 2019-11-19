@@ -7,10 +7,26 @@ using C1.Implementations;
 namespace DSAlgo {
     class Program {
         public static void Main(string[] args) {
-            double a = 1444.2539000000002 / Math.Pow(1280, 3);
-            double r = a * Math.Pow(2560, 3);
-            System.Console.WriteLine(r);
-            ThreeSumCalc(args);
+            // double a = 1444.2539000000002 / Math.Pow(1280, 3);
+            // double r = a * Math.Pow(2560, 3);
+            // System.Console.WriteLine(r);
+            FastTwoSumCalc(args);
+            // ThreeSumCalc(args);
+        }
+
+        private static void FastTwoSumCalc(string[] args) {
+            if (args.Length == 0) {
+                System.Console.WriteLine("需要在参数中指定问题规模! \n放弃计算...");
+                return;
+            }
+            int count = int.Parse(args[0]);
+            var arr = ThreeSum.GetRandomArray(count);
+            var watch = new Stopwatch();
+            watch.Start();
+            var result = FastTwoSum.Count(arr);
+            watch.Stop();
+            var ts = watch.Elapsed;
+            System.Console.WriteLine($"快速两数相加: {result}, 耗时: {ts.TotalSeconds} S");
         }
 
         /// <summary>
