@@ -10,7 +10,8 @@ namespace DSAlgo {
             // double a = 1444.2539000000002 / Math.Pow(1280, 3);
             // double r = a * Math.Pow(2560, 3);
             // System.Console.WriteLine(r);
-            FastTwoSumCalc(args);
+            // FastTwoSumCalc(args);
+            FastThreeSumCalc(args);
             // ThreeSumCalc(args);
         }
 
@@ -27,6 +28,28 @@ namespace DSAlgo {
             watch.Stop();
             var ts = watch.Elapsed;
             System.Console.WriteLine($"快速两数相加: {result}, 耗时: {ts.TotalSeconds} S");
+        }
+
+        private static void FastThreeSumCalc(string[] args) {
+            if (args.Length == 0) {
+                System.Console.WriteLine("需要在参数中指定问题规模! \n放弃计算...");
+                return;
+            }
+            int count = int.Parse(args[0]);
+            for (int i = 1; i <= 5; i++) {
+                int size = count * Convert.ToInt32(Math.Pow(2, i));
+                var arr = ThreeSum.GetRandomArray(size);
+                var watch = new Stopwatch();
+                watch.Start();
+                var result = FastThreeSum.Count(arr);
+                watch.Stop();
+                var ts = watch.Elapsed;
+                System.Console.WriteLine();
+                System.Console.WriteLine($"快速-消耗时间: {ts.TotalMilliseconds} ms ({ts.TotalSeconds} s)");
+                System.Console.WriteLine($"快速-问题规模: {arr.Length}");
+                System.Console.WriteLine($"快速-求解结果(三个数和为 0 的个数): {result}");
+                System.Console.WriteLine();
+            }
         }
 
         /// <summary>
