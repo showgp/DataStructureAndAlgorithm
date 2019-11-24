@@ -20,7 +20,13 @@ namespace C1.Implementations {
 
         public int Size() => _list.Size();
 
-        public Item Top() => _list.Head.Next.Value;
+        public Item Top {
+            get {
+                if(_list.Head.Next == null)
+                    return default;
+                return _list.Head.Next.Value;
+            }
+        }
 
         IEnumerator IEnumerable.GetEnumerator() => _list.GetEnumerator();
 

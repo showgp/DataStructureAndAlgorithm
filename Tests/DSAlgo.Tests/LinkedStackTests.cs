@@ -31,10 +31,10 @@ namespace DSAlgo.Tests {
             var elem2 = "elem2";
 
             _sut.Push(elem1);
-            Assert.AreEqual(elem1, _sut.Top());
+            Assert.AreEqual(elem1, _sut.Top);
 
             _sut.Push(elem2);
-            Assert.AreEqual(elem2, _sut.Top());
+            Assert.AreEqual(elem2, _sut.Top);
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace DSAlgo.Tests {
 
             var r1 = _sut.Pop();
             Assert.AreEqual(elem2, r1);
-            Assert.AreEqual(elem1, _sut.Top());
+            Assert.AreEqual(elem1, _sut.Top);
             var r2 = _sut.Pop();
             Assert.AreEqual(elem1, r2);
             var r3 = _sut.Pop();

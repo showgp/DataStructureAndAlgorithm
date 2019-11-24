@@ -58,7 +58,7 @@ namespace C1.Interfaces {
         /// 获取栈顶元素的值
         /// </summary>
         /// <returns></returns>
-        Item Top();
+        Item Top { get; }
     }
 
     /// <summary>

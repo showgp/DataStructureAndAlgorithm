@@ -34,7 +34,9 @@ namespace C1.Interfaces {
     /// 基于链表的队列
     /// </summary>
     /// <typeparam name="Item"></typeparam>
-    public interface ILinkedQueue<Item>: IQueue<Item> { }
+    public interface ILinkedQueue<Item>: IQueue<Item> {
+        Item Front { get; }
+    }
 
     /// <summary>
     /// 基于链表的 Bag
