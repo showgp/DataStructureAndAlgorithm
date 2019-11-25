@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 
 namespace C1.Interfaces {
-    public interface IBag<Item> : IEnumerable<Item> {
+
+    public interface IBag<Item>: IEnumerable<Item> {
+
         /// add an item
         void Add(Item item);
 
@@ -12,7 +14,8 @@ namespace C1.Interfaces {
         int Size();
     }
 
-    public interface IQueue<Item> : IEnumerable<Item> {
+    public interface IQueue<Item>: IEnumerable<Item> {
+
         /// add an item
         void Enqueue(Item item);
 
@@ -25,21 +28,45 @@ namespace C1.Interfaces {
         int Size();
     }
 
-    public interface IStack<Item> : IEnumerable<Item> {
+    public interface IStack<Item>: IEnumerable<Item> {
+
+        /// <summary>
+        /// 入栈
+        /// </summary>
+        /// <param name="item"></param>
         void Push(Item item);
 
+        /// <summary>
+        /// 出栈
+        /// </summary>
+        /// <returns></returns>
         Item Pop();
 
+        /// <summary>
+        /// 栈是否为空
+        /// </summary>
+        /// <returns></returns>
         bool IsEmpty();
 
+        /// <summary>
+        /// 当前栈的大小
+        /// </summary>
+        /// <returns></returns>
         int Size();
+
+        /// <summary>
+        /// 获取栈顶元素的值
+        /// </summary>
+        /// <returns></returns>
+        Item Top { get; }
     }
 
     /// <summary>
     /// 链表接口
     /// </summary>
     /// <typeparam name="Item">存储的数据元素类型</typeparam>
-    public interface ILinkedList<Item> {
+    public interface ILinkedList<Item>: IEnumerable<Item> {
+
         /// <summary>
         /// 链表长度
         /// </summary>
@@ -57,6 +84,7 @@ namespace C1.Interfaces {
         /// </summary>
         /// <param name="item"></param>
         void InsertAtStart(Item item);
+
         /// <summary>
         /// 从头部删除
         /// </summary>
@@ -81,6 +109,7 @@ namespace C1.Interfaces {
     /// </summary>
     /// <typeparam name="Item"></typeparam>
     public interface ILinkedListNode<Item> {
+
         /// <summary>
         /// 节点数据
         /// </summary>
