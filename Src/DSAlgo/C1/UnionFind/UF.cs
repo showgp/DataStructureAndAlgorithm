@@ -67,4 +67,43 @@ namespace C1.Interfaces.UnionFind {
                 if (id[i] == pID) id[i] = qID;
         }
     }
+
+    public class QuickUnionUF : IUnionFind {
+        private readonly int[] id;
+
+        public QuickUnionUF(int numberOfItems) {
+            id = new int[numberOfItems];
+            for (int i = 0; i < numberOfItems; ++i) id[i] = i;
+        }
+
+        public int Count() {
+            throw new System.NotImplementedException();
+        }
+
+        public int Find(int p) => FindRootOf(p);
+
+        // 是否满足性能需求, 还是有提高空间?
+        public bool IsConnected(int p, int q) => FindRootOf(p) == FindRootOf(q);
+
+        public void Union(int p, int q) {
+            // p.root.parent = q.root
+            // 1. find q's root
+            // 2. find p's root
+            // 3. set p's root's parent as q's root
+
+            // if (IsConnected(p, q)) return;
+
+            var pRoot = FindRootOf(p);
+            var qRoot = FindRootOf(q);
+            id[pRoot] = qRoot;
+        }
+
+        /// 找到 p 的 root 下标
+        private int FindRootOf(int p) {
+            var root = p;
+            // 当下标和值不相等时, 说明还没有到根, 此时将 root 下标往上设置.
+            while (root != id[root]) root = id[root];
+            return root;
+        }
+    }
 }
