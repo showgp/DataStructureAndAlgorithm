@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace C1.Interfaces.UnionFind {
 
@@ -41,12 +42,13 @@ namespace C1.Interfaces.UnionFind {
     /// <summary>
     /// 动态连通性问题的 QuickFind 算法实现类. 主要目的是实现快速查找, 但 Union 操作开销大.
     /// </summary>
-    public class QuickFindUF : IUnionFind {
+    public class QuickFindUF: IUnionFind {
         private readonly int[] id;
 
         public QuickFindUF(int numberOfItems) {
             id = new int[numberOfItems];
-            for (int i = 0; i < numberOfItems; ++i) id[i] = i;
+            for(int i = 0; i < numberOfItems; ++i)
+                id[i] = i;
         }
 
         public int Count() {
@@ -63,17 +65,19 @@ namespace C1.Interfaces.UnionFind {
             var pID = id[p];
             var qID = id[q];
             // 将数组中所有等于 pID 的值修改为 qID
-            for (int i = 0; i < id.Length; ++i)
-                if (id[i] == pID) id[i] = qID;
+            for(int i = 0; i < id.Length; ++i)
+                if(id[i] == pID)
+                    id[i] = qID;
         }
     }
 
-    public class QuickUnionUF : IUnionFind {
+    public class QuickUnionUF: IUnionFind {
         private readonly int[] id;
 
         public QuickUnionUF(int numberOfItems) {
             id = new int[numberOfItems];
-            for (int i = 0; i < numberOfItems; ++i) id[i] = i;
+            for(int i = 0; i < numberOfItems; ++i)
+                id[i] = i;
         }
 
         public int Count() {
@@ -102,8 +106,61 @@ namespace C1.Interfaces.UnionFind {
         private int FindRootOf(int p) {
             var root = p;
             // 当下标和值不相等时, 说明还没有到根, 此时将 root 下标往上设置.
-            while (root != id[root]) root = id[root];
+            while(root != id[root])
+                root = id[root];
             return root;
+        }
+    }
+
+    public class QuickUnionImprovementsUF: IUnionFind {
+        private readonly int[] id;
+
+        /// <summary>
+        /// 用于存放每个节点对应的树的大小
+        /// </summary>
+        private readonly int[] sz;
+
+        public QuickUnionImprovementsUF(int numberOfItems) {
+            id = new int[numberOfItems];
+            sz = new int[numberOfItems];
+            for(int i = 0; i < numberOfItems; ++i) {
+                id[i] = i;
+                sz[i] = 1;
+            }
+        }
+
+        public int Count() {
+            var list = new List<int>(id);
+            list.Select(item => FindRootOf(item));
+            return new HashSet<int>(list).Count;
+        }
+
+        public int Find(int p) => FindRootOf(p);
+
+        public bool IsConnected(int p, int q) => FindRootOf(p) == FindRootOf(q);
+
+        public void Union(int p, int q) {
+            var pRoot = FindRootOf(p);
+            var qRoot = FindRootOf(q);
+            // 小树根附加到大树上
+            if(sz[p] >= sz[q]) {
+                id[qRoot] = pRoot;
+                sz[pRoot] = sz[pRoot] + sz[qRoot];
+            } else {
+                id[pRoot] = qRoot;
+                sz[qRoot] = sz[pRoot] + sz[qRoot];
+            }
+        }
+
+        /// 找到 p 的 root 下标
+        private int FindRootOf(int p) {
+            var i = p;
+            while(i != id[i]) {
+                // 这行代码的作用是把树展平(这里仅把父节点上移一层): 路径压缩算法
+                id[i] = id[id[i]];
+                i = id[i];
+            }
+            return i;
         }
     }
 }
